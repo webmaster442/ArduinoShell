@@ -40,7 +40,7 @@ namespace ArduinoShell.Utils
                 value = Convert.ToInt64(input, baseSystem);
                 return true;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 value = 0;
                 return false;
