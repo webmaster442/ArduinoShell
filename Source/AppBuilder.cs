@@ -20,6 +20,7 @@ namespace ArduinoShell
                 yield return new DigitalWriteCommand();
                 yield return new DigitalReadCommand();
                 yield return new GetVersionCommand();
+                yield return new AnalogReadCommand();
             }
         }
     }
