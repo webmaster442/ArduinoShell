@@ -7,4 +7,4 @@
 
 #define VERSION_MAYOR 20		//year
 #define VERSION_MINOR 8			//month
-#define VERSION_BUILD 23		//day
+#define VERSION_BUILD 24		//day

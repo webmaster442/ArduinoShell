@@ -31,8 +31,9 @@ void loop() {
             }
         }
         if (recieved > 0) {
-            runInstruction(recieveBuffer);
+            RunInstruction(recieveBuffer);
             delay(50);
         }
     }
 }
+

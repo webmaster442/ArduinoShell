@@ -6,7 +6,7 @@
 #pragma once
 
 void Nop() {
-	//nop
+	asm("nop");
 }
 
 void DoGetVersion() {
@@ -26,4 +26,17 @@ void DoDigitalRead(uint8_t port) {
 	uint8_t value = digitalRead(port);
 	Serial.write(1);
 	Serial.write(value);
+}
+
+void DoAnalogWrite(uint8_t port, uint16_t value) {
+	pinMode(port, OUTPUT);
+	digitalWrite(port, 0);
+	analogWrite(port, value);
+}
+
+void DoAnalogRead(uint8_t port) {
+	uint32package_t package;
+	package.int32 = analogRead(port);
+	Serial.write(4);
+	Serial.write(package.bytes, 4);
 }
