@@ -40,3 +40,21 @@ void DoAnalogRead(uint8_t port) {
 	Serial.write(4);
 	Serial.write(package.bytes, 4);
 }
+
+void DoAnalogReadResolution(uint8_t precision) {
+//analogReadResolution is only avaliable on ARM boards
+#if defined(__arm__) 
+	analogReadResolution(precision);
+#elif defined(__AVR__)
+	asm("nop");
+#endif
+}
+
+void DoAnalogReference(uint8_t type) {
+	if (type == 0) {
+		analogReference(DEFAULT);
+	}
+	else {
+		analogReference(EXTERNAL);
+	}
+}

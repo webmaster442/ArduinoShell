@@ -26,6 +26,12 @@ void RunInstruction(uint8_t* buffer) {
     case INSTRUCTION_ANALOG_WRITE:
         DoAnalogWrite(buffer[1], PackUint16(buffer[2], buffer[3]));
         break;
+    case INSTRUCTION_ANALOG_RESOULUTION:
+        DoAnalogReadResolution(buffer[1]);
+        break;
+    case INSTRUCTION_ANALOG_REFERENCE:
+        DoAnalogReference(buffer[1]);
+        break;
     default:
         Nop();
         break;
