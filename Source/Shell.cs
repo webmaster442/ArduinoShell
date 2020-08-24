@@ -69,8 +69,24 @@ namespace ArduinoShell
         private void WriteResult(object? result)
         {
             if (result == null) return;
-            string fallback = result.ToString() ?? string.Empty;
-            _console.WriteLine(fallback);
+
+            if (result is byte
+                || result is short
+                || result is int)
+            {
+                long value = Convert.ToInt64(result);
+                _console.WriteLine("Bin: {0}", Convert.ToString(value, 2));
+                _console.WriteLine("Oct: {0}", Convert.ToString(value, 8));
+                _console.WriteLine("Hex: {0}", Convert.ToString(value, 16));
+                _console.WriteLine("Dec: {0}", value);
+            }
+            else
+            {
+                string fallback = result.ToString() ?? string.Empty;
+                _console.WriteLine(fallback);
+            }
+
+
 
         }
     }
